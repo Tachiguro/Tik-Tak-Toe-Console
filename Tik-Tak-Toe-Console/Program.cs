@@ -10,6 +10,7 @@ namespace Tik_Tak_Toe_Console
     {
         static void Main(string[] args)
         {
+            Start:
             //Startmenue
             //Variablen
             string NL = Environment.NewLine;
@@ -33,13 +34,21 @@ namespace Tik_Tak_Toe_Console
             }
             else if (Auswahl == "start" || Auswahl == "Start")
                 Einfuehrung();
-
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("Falsche eingabe. Bitte noch mal Probieren.");
+                Console.WriteLine("Weiter mit belibiger Taste.");
+                Console.ReadKey();
+                Console.Clear();
+                goto Start;
+            }
         }
         //Programende Methode
         static void Ende()
         {
             Console.Clear();
-            Console.WriteLine("Bis zum Nächsten mal. /n");
+            Console.WriteLine("Bis zum Nächsten mal. \n");
             Console.WriteLine("Weiter mit belibiger Taste");
             Console.ReadKey();
             Environment.Exit(1);
@@ -91,13 +100,99 @@ namespace Tik_Tak_Toe_Console
             Console.WriteLine(" C" + " | " + SpielSteine[2, 0] + " | " + SpielSteine[2, 1] + " | " + SpielSteine[2, 2] + NL);
             Console.WriteLine("Spieler 1 hat gewonnen!\n");
             Console.WriteLine("Um Spiel zu Starten belibige Taste drücken.");
-            NeuesSpiel();
             Console.ReadKey();
+            NeuesSpiel();
         }
         static void NeuesSpiel()
         {
-            Console.WriteLine("#################################################");
+            StarteNeunsSpiel:
+            string NL = Environment.NewLine;
+            Console.Clear();
+            int Spieler = 1;
+            bool Gewonnen = false;
+            string Abfrage;
 
+            //Array für die Spielsteine
+            string[,] SpielSteine = new string[3, 3]
+            //"A" , "B" , "C"
+            {{" " , " " , " "}, //1
+             {" " , " " , " "}, //2
+             {" " , " " , " "}};//3
+            do
+            {
+                //Spielfeld ausgabe
+                Console.WriteLine("  " + " | " + "1" + " | " + "2" + " | " + "3");
+                Console.WriteLine("--" + "-+-" + "-" + "-+-" + "-" + "-+-" + "--");
+                Console.WriteLine(" A" + " | " + SpielSteine[0, 0] + " | " + SpielSteine[0, 1] + " | " + SpielSteine[0, 2]);
+                Console.WriteLine("--" + "-+-" + "-" + "-+-" + "-" + "-+-" + "--");
+                Console.WriteLine(" B" + " | " + SpielSteine[1, 0] + " | " + SpielSteine[1, 1] + " | " + SpielSteine[1, 2]);
+                Console.WriteLine("--" + "-+-" + "-" + "-+-" + "-" + "-+-" + "--");
+                Console.WriteLine(" C" + " | " + SpielSteine[2, 0] + " | " + SpielSteine[2, 1] + " | " + SpielSteine[2, 2] + NL);
+
+                if (SpielSteine[0, 0] == "X" && SpielSteine[0, 1] == "X" && SpielSteine[0, 2] == "X" ||
+                    SpielSteine[1, 0] == "X" && SpielSteine[1, 1] == "X" && SpielSteine[1, 2] == "X" ||
+                    SpielSteine[2, 0] == "X" && SpielSteine[2, 1] == "X" && SpielSteine[2, 2] == "X" ||
+
+                    SpielSteine[0, 0] == "X" && SpielSteine[1, 0] == "X" && SpielSteine[2, 0] == "X" ||
+                    SpielSteine[0, 1] == "X" && SpielSteine[1, 1] == "X" && SpielSteine[2, 1] == "X" ||
+                    SpielSteine[0, 2] == "X" && SpielSteine[1, 2] == "X" && SpielSteine[2, 2] == "X" ||
+
+                    SpielSteine[0, 0] == "X" && SpielSteine[1, 1] == "X" && SpielSteine[2, 2] == "X" ||
+                    SpielSteine[0, 2] == "X" && SpielSteine[1, 1] == "X" && SpielSteine[2, 0] == "X")
+                {
+                    Console.WriteLine("Spieler 1 hat Gewonnen!");
+                    Gewonnen = true;
+
+                }
+                else if (SpielSteine[0, 0] == "O" && SpielSteine[0, 1] == "O" && SpielSteine[0, 2] == "O" ||
+                         SpielSteine[1, 0] == "O" && SpielSteine[1, 1] == "O" && SpielSteine[1, 2] == "O" ||
+                         SpielSteine[2, 0] == "O" && SpielSteine[2, 1] == "O" && SpielSteine[2, 2] == "O" ||
+
+                         SpielSteine[0, 0] == "O" && SpielSteine[1, 0] == "O" && SpielSteine[2, 0] == "O" ||
+                         SpielSteine[0, 1] == "O" && SpielSteine[1, 1] == "O" && SpielSteine[2, 1] == "O" ||
+                         SpielSteine[0, 2] == "O" && SpielSteine[1, 2] == "O" && SpielSteine[2, 2] == "O" ||
+
+                         SpielSteine[0, 0] == "O" && SpielSteine[1, 1] == "O" && SpielSteine[2, 2] == "O" ||
+                         SpielSteine[0, 2] == "O" && SpielSteine[1, 1] == "O" && SpielSteine[2, 0] == "O")
+                {
+                    Console.WriteLine("Spieler 2 hat Gewonnen!");
+                    Gewonnen = true;
+                }
+                else
+                {
+                    Console.WriteLine("Spieler" + Spieler);
+                    Console.Write("Bitte Koordinaten eintippen:");
+                    Abfrage:
+                    //Spieler eingabe und AUswertung
+                    Abfrage = Console.ReadLine();
+                    if (Abfrage == "A1" || Abfrage == "a1")
+                    {
+                        if (Spieler == 1)
+                        {
+                            SpielSteine[0, 0] = "X";
+                        }
+                        else
+                        {
+                            SpielSteine[0, 0] = "O";
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Falsche eingabe.");
+                        Console.WriteLine("Weiter mit belibiger Taste...");
+                        Console.ReadKey();
+                        goto Abfrage;
+                    }
+                }
+
+                    Console.Write("Spieler 1 bitte Koordinaten eingeben:");
+
+            } while (Gewonnen == true);
+
+            
+            Console.ReadKey();
+            goto StarteNeunsSpiel;
         }
+        //ToDo Spieler eingaben
     }
 }
