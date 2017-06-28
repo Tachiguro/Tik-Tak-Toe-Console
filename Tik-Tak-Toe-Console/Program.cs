@@ -33,8 +33,8 @@ namespace Tik_Tak_Toe_Console
                 Ende();
             }
             else if (Auswahl == "start" || Auswahl == "Start")
-                //Einfuehrung();
-                NeuesSpiel();
+                Einfuehrung();
+
             else
             {
                 Console.Clear();
@@ -74,13 +74,13 @@ namespace Tik_Tak_Toe_Console
             Console.WriteLine("Beispiel: \"B3\"\n");
             SpielSteine[1, 2] = "X";
             //Spielfeld Ausgabe
-            Console.WriteLine("  " + " | " + "1" + " | " + "2" + " | " + "3");
+            Console.WriteLine("  " + " | " + "A" + " | " + "B" + " | " + "C");
             Console.WriteLine("--" + "-+-" + "-" + "-+-" + "-" + "-+-" + "--");
-            Console.WriteLine(" A" + " | " + SpielSteine[0, 0] + " | " + SpielSteine[0, 1] + " | " + SpielSteine[0, 2]);
+            Console.WriteLine(" 1" + " | " + SpielSteine[0, 0] + " | " + SpielSteine[0, 1] + " | " + SpielSteine[0, 2]);
             Console.WriteLine("--" + "-+-" + "-" + "-+-" + "-" + "-+-" + "--");
-            Console.WriteLine(" B" + " | " + SpielSteine[1, 0] + " | " + SpielSteine[1, 1] + " | " + SpielSteine[1, 2]);
+            Console.WriteLine(" 2" + " | " + SpielSteine[1, 0] + " | " + SpielSteine[1, 1] + " | " + SpielSteine[1, 2]);
             Console.WriteLine("--" + "-+-" + "-" + "-+-" + "-" + "-+-" + "--");
-            Console.WriteLine(" C" + " | " + SpielSteine[2, 0] + " | " + SpielSteine[2, 1] + " | " + SpielSteine[2, 2] + NL);
+            Console.WriteLine(" 3" + " | " + SpielSteine[2, 0] + " | " + SpielSteine[2, 1] + " | " + SpielSteine[2, 2] + NL);
 
             Console.WriteLine("Hat ein Spieler drei Steine horizontal, vertikal oder diagonal,\ngewinnt er." + NL);
 
@@ -92,13 +92,13 @@ namespace Tik_Tak_Toe_Console
             SpielSteine[1, 1] = "X";
 
             //Spielfeld Ausgabe
-            Console.WriteLine("  " + " | " + "1" + " | " + "2" + " | " + "3");
+            Console.WriteLine("  " + " | " + "A" + " | " + "B" + " | " + "C");
             Console.WriteLine("--" + "-+-" + "-" + "-+-" + "-" + "-+-" + "--");
-            Console.WriteLine(" A" + " | " + SpielSteine[0, 0] + " | " + SpielSteine[0, 1] + " | " + SpielSteine[0, 2]);
+            Console.WriteLine(" 1" + " | " + SpielSteine[0, 0] + " | " + SpielSteine[0, 1] + " | " + SpielSteine[0, 2]);
             Console.WriteLine("--" + "-+-" + "-" + "-+-" + "-" + "-+-" + "--");
-            Console.WriteLine(" B" + " | " + SpielSteine[1, 0] + " | " + SpielSteine[1, 1] + " | " + SpielSteine[1, 2]);
+            Console.WriteLine(" 2" + " | " + SpielSteine[1, 0] + " | " + SpielSteine[1, 1] + " | " + SpielSteine[1, 2]);
             Console.WriteLine("--" + "-+-" + "-" + "-+-" + "-" + "-+-" + "--");
-            Console.WriteLine(" C" + " | " + SpielSteine[2, 0] + " | " + SpielSteine[2, 1] + " | " + SpielSteine[2, 2] + NL);
+            Console.WriteLine(" 3" + " | " + SpielSteine[2, 0] + " | " + SpielSteine[2, 1] + " | " + SpielSteine[2, 2] + NL);
             Console.WriteLine("Spieler 1 hat gewonnen!\n");
             Console.WriteLine("Um Spiel zu Starten belibige Taste drücken.");
             Console.ReadKey();
@@ -106,6 +106,9 @@ namespace Tik_Tak_Toe_Console
         }
         static void NeuesSpiel()
         {
+            int Spieler1Gewonnen = 0;
+            int Spieler2Gewonnen = 0;
+            NeuesSpielStarten:
             string NL = Environment.NewLine;
             Console.Clear();
             int Spieler = 1;
@@ -123,13 +126,13 @@ namespace Tik_Tak_Toe_Console
             {
                 Anfang:
                 //Spielfeld ausgabe
-                Console.WriteLine("  " + " | " + "1" + " | " + "2" + " | " + "3");
+                Console.WriteLine("  " + " | " + "A" + " | " + "B" + " | " + "C");
                 Console.WriteLine("--" + "-+-" + "-" + "-+-" + "-" + "-+-" + "--");
-                Console.WriteLine(" A" + " | " + SpielSteine[0, 0] + " | " + SpielSteine[0, 1] + " | " + SpielSteine[0, 2]);
+                Console.WriteLine(" 1" + " | " + SpielSteine[0, 0] + " | " + SpielSteine[0, 1] + " | " + SpielSteine[0, 2]);
                 Console.WriteLine("--" + "-+-" + "-" + "-+-" + "-" + "-+-" + "--");
-                Console.WriteLine(" B" + " | " + SpielSteine[1, 0] + " | " + SpielSteine[1, 1] + " | " + SpielSteine[1, 2]);
+                Console.WriteLine(" 2" + " | " + SpielSteine[1, 0] + " | " + SpielSteine[1, 1] + " | " + SpielSteine[1, 2]);
                 Console.WriteLine("--" + "-+-" + "-" + "-+-" + "-" + "-+-" + "--");
-                Console.WriteLine(" C" + " | " + SpielSteine[2, 0] + " | " + SpielSteine[2, 1] + " | " + SpielSteine[2, 2] + NL);
+                Console.WriteLine(" 3" + " | " + SpielSteine[2, 0] + " | " + SpielSteine[2, 1] + " | " + SpielSteine[2, 2] + NL);
 
                 Console.WriteLine("Spieler" + Spieler);
                 Console.Write("Bitte Koordinaten eintippen:");
@@ -189,11 +192,11 @@ namespace Tik_Tak_Toe_Console
                         goto Anfang;
                     }
                 }
-                else if (Abfrage == "A0" || Abfrage == "a0")
+                else if (Abfrage == "A2" || Abfrage == "a2")
                 {
                     if (Spieler == 1 && SpielSteine[1, 0] == " ")
                     {
-                        SpielSteine[0, 1] = "X";
+                        SpielSteine[1, 0] = "X";
                     }
                     else if (Spieler == 2 && SpielSteine[1, 0] == " ")
                     {
@@ -207,7 +210,7 @@ namespace Tik_Tak_Toe_Console
                         goto Anfang;
                     }
                 }
-                else if (Abfrage == "A1" || Abfrage == "a1")
+                else if (Abfrage == "B2" || Abfrage == "b2")
                 {
                     if (Spieler == 1 && SpielSteine[1, 1] == " ")
                     {
@@ -225,7 +228,7 @@ namespace Tik_Tak_Toe_Console
                         goto Anfang;
                     }
                 }
-                else if (Abfrage == "C3" || Abfrage == "c3")
+                else if (Abfrage == "C2" || Abfrage == "c2")
                 {
                     if (Spieler == 1 && SpielSteine[1, 2] == " ")
                     {
@@ -261,7 +264,7 @@ namespace Tik_Tak_Toe_Console
                         goto Anfang;
                     }
                 }
-                else if (Abfrage == "B2" || Abfrage == "B2")
+                else if (Abfrage == "B3" || Abfrage == "b3")
                 {
                     if (Spieler == 1 && SpielSteine[2, 1] == " ")
                     {
@@ -317,9 +320,14 @@ namespace Tik_Tak_Toe_Console
                     SpielSteine[0, 0] == "X" && SpielSteine[1, 1] == "X" && SpielSteine[2, 2] == "X" ||
                     SpielSteine[0, 2] == "X" && SpielSteine[1, 1] == "X" && SpielSteine[2, 0] == "X")
                 {
+                    Spieler1Gewonnen++;
                     Console.WriteLine("Spieler 1 hat Gewonnen!");
+                    Console.WriteLine("Spieler 1 hat " + Spieler1Gewonnen + " gewonnen");
+                    Console.WriteLine("Spieler 2 hat " + Spieler2Gewonnen + " gewonnen");
+
+                    Console.WriteLine("Für ein neus Spiel belibige Taste drücken.");
                     Console.ReadKey();
-                    Ende();
+                    goto NeuesSpielStarten;
 
                     Gewonnen = true;
 
@@ -336,9 +344,14 @@ namespace Tik_Tak_Toe_Console
                          SpielSteine[0, 0] == "O" && SpielSteine[1, 1] == "O" && SpielSteine[2, 2] == "O" ||
                          SpielSteine[0, 2] == "O" && SpielSteine[1, 1] == "O" && SpielSteine[2, 0] == "O")
                 {
+                    Spieler2Gewonnen++;
                     Console.WriteLine("Spieler 2 hat Gewonnen!");
+                    Console.WriteLine("Spieler 1 hat " + Spieler1Gewonnen + " gewonnen");
+                    Console.WriteLine("Spieler 2 hat " + Spieler2Gewonnen + " gewonnen");
+
+                    Console.WriteLine("Für ein neus Spiel belibige Taste drücken.");
                     Console.ReadKey();
-                    Ende();
+                    goto NeuesSpielStarten;
                     Gewonnen = true;
                 }
                 //Spielerwechsel
@@ -348,9 +361,16 @@ namespace Tik_Tak_Toe_Console
                     Spieler = 1;
                 Console.Clear();
                 Zaehler++;
-            } while (Zaehler == 1);
-            Console.ReadKey();
+                if(Zaehler== 9)
+                {
+                    Console.WriteLine("Unentschieden");
+                    Console.WriteLine("Für ein neus Spiel belibige Taste drücken.");
+                    Console.ReadKey();
 
+                    goto NeuesSpielStarten;
+                }
+            } while (Gewonnen == false);
+            Console.ReadKey();
         }
     }
 }
