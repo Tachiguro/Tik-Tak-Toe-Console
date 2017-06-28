@@ -109,13 +109,14 @@ namespace Tik_Tak_Toe_Console
             string NL = Environment.NewLine;
             Console.Clear();
             int Spieler = 1;
+            int Zaehler = 0;
             bool Gewonnen = false;
-            string Abfrage;
+            string Abfrage = null;
 
             //Array für die Spielsteine
             string[,] SpielSteine = new string[3, 3]
             //"A" , "B" , "C"
-            {{"X" , " " , " "}, //1
+            {{" " , " " , " "}, //1
              {" " , " " , " "}, //2
              {" " , " " , " "}};//3
             do
@@ -133,15 +134,14 @@ namespace Tik_Tak_Toe_Console
                 Console.WriteLine("Spieler" + Spieler);
                 Console.Write("Bitte Koordinaten eintippen:");
                 //Spieler eingabe und AUswertung
-                SpielSteinSetzen:
                 Abfrage = Console.ReadLine();
                 if (Abfrage == "A1" || Abfrage == "a1")
                 {
-                    if (Spieler == 1 && SpielSteine[0, 0] != "X" || SpielSteine[0, 0] != "O")
+                    if (Spieler == 1 && SpielSteine[0, 0] == " ")
                     {
                         SpielSteine[0, 0] = "X";
                     }
-                    else if (Spieler == 2 && SpielSteine[0, 0] != "X" || SpielSteine[0, 0] != "O")
+                    else if (Spieler == 2 && SpielSteine[0, 0] == " ")
                     {
                         SpielSteine[0, 0] = "O";
                     }
@@ -150,16 +150,16 @@ namespace Tik_Tak_Toe_Console
                         Console.WriteLine("Spielfeld bereits belegt, bitte andere Koordinaten eingeben.");
                         Console.ReadKey();
                         Console.Clear();
-                        goto SpielSteinSetzen;
+                        goto Anfang;
                     }
                 }
                 else if (Abfrage == "B1" || Abfrage == "b1")
                 {
-                    if (Spieler == 1 && SpielSteine[0, 1] != "X" || SpielSteine[0, 1] != "O")
+                    if (Spieler == 1 && SpielSteine[0, 1] == " ")
                     {
                         SpielSteine[0, 1] = "X";
                     }
-                    else if (Spieler == 2 && SpielSteine[0, 1] != "X" || SpielSteine[0, 1] != "O")
+                    else if (Spieler == 2 && SpielSteine[0, 1] == " ")
                     {
                         SpielSteine[0, 1] = "O";
                     }
@@ -168,16 +168,16 @@ namespace Tik_Tak_Toe_Console
                         Console.WriteLine("Spielfeld bereits belegt, bitte andere Koordinaten eingeben.");
                         Console.ReadKey();
                         Console.Clear();
-                        goto SpielSteinSetzen;
+                        goto Anfang;
                     }
                 }
                 else if (Abfrage == "C1" || Abfrage == "c1")
                 {
-                    if (Spieler == 1 && SpielSteine[0, 2] != "X" || SpielSteine[0, 2] != "O")
+                    if (Spieler == 1 && SpielSteine[0, 2] == " ")
                     {
                         SpielSteine[0, 2] = "X";
                     }
-                    else if (Spieler == 2 && SpielSteine[0, 2] != "X" || SpielSteine[0, 2] != "O")
+                    else if (Spieler == 2 && SpielSteine[0, 2] == " ")
                     {
                         SpielSteine[0, 2] = "O";
                     }
@@ -186,16 +186,16 @@ namespace Tik_Tak_Toe_Console
                         Console.WriteLine("Spielfeld bereits belegt, bitte andere Koordinaten eingeben.");
                         Console.ReadKey();
                         Console.Clear();
-                        goto SpielSteinSetzen;
+                        goto Anfang;
                     }
                 }
                 else if (Abfrage == "A0" || Abfrage == "a0")
                 {
-                    if (Spieler == 1 && SpielSteine[1, 0] != "X" || SpielSteine[1, 0] != "O")
+                    if (Spieler == 1 && SpielSteine[1, 0] == " ")
                     {
                         SpielSteine[0, 1] = "X";
                     }
-                    else if (Spieler == 2 && SpielSteine[1, 0] != "X" || SpielSteine[1, 0] != "O")
+                    else if (Spieler == 2 && SpielSteine[1, 0] == " ")
                     {
                         SpielSteine[1, 0] = "O";
                     }
@@ -204,16 +204,16 @@ namespace Tik_Tak_Toe_Console
                         Console.WriteLine("Spielfeld bereits belegt, bitte andere Koordinaten eingeben.");
                         Console.ReadKey();
                         Console.Clear();
-                        goto SpielSteinSetzen;
+                        goto Anfang;
                     }
                 }
                 else if (Abfrage == "A1" || Abfrage == "a1")
                 {
-                    if (Spieler == 1 && SpielSteine[1, 1] != "X" || SpielSteine[1, 1] != "O")
+                    if (Spieler == 1 && SpielSteine[1, 1] == " ")
                     {
                         SpielSteine[1, 1] = "X";
                     }
-                    else if (Spieler == 2 && SpielSteine[1, 1] != "X" || SpielSteine[1, 1] != "O")
+                    else if (Spieler == 2 && SpielSteine[1, 1] == " ")
                     {
                         SpielSteine[1, 1] = "O";
                     }
@@ -222,16 +222,16 @@ namespace Tik_Tak_Toe_Console
                         Console.WriteLine("Spielfeld bereits belegt, bitte andere Koordinaten eingeben.");
                         Console.ReadKey();
                         Console.Clear();
-                        goto SpielSteinSetzen;
+                        goto Anfang;
                     }
                 }
                 else if (Abfrage == "C3" || Abfrage == "c3")
                 {
-                    if (Spieler == 1 && SpielSteine[1, 2] != "X" || SpielSteine[1, 2] != "O")
+                    if (Spieler == 1 && SpielSteine[1, 2] == " ")
                     {
                         SpielSteine[1, 2] = "X";
                     }
-                    else if (Spieler == 2 && SpielSteine[1, 2] != "X" || SpielSteine[1, 2] != "O")
+                    else if (Spieler == 2 && SpielSteine[1, 2] == " ")
                     {
                         SpielSteine[1, 2] = "O";
                     }
@@ -240,16 +240,16 @@ namespace Tik_Tak_Toe_Console
                         Console.WriteLine("Spielfeld bereits belegt, bitte andere Koordinaten eingeben.");
                         Console.ReadKey();
                         Console.Clear();
-                        goto SpielSteinSetzen;
+                        goto Anfang;
                     }
                 }
                 else if (Abfrage == "A3" || Abfrage == "a3")
                 {
-                    if (Spieler == 1 && SpielSteine[2, 0] != "X" || SpielSteine[2, 0] != "O")
+                    if (Spieler == 1 && SpielSteine[2, 0] == " ")
                     {
                         SpielSteine[2, 0] = "X";
                     }
-                    else if (Spieler == 2 && SpielSteine[2, 0] != "X" || SpielSteine[2, 0] != "O")
+                    else if (Spieler == 2 && SpielSteine[2, 0] == " ")
                     {
                         SpielSteine[2, 0] = "O";
                     }
@@ -258,16 +258,16 @@ namespace Tik_Tak_Toe_Console
                         Console.WriteLine("Spielfeld bereits belegt, bitte andere Koordinaten eingeben.");
                         Console.ReadKey();
                         Console.Clear();
-                        goto SpielSteinSetzen;
+                        goto Anfang;
                     }
                 }
                 else if (Abfrage == "B2" || Abfrage == "B2")
                 {
-                    if (Spieler == 1 && SpielSteine[2, 1] != "X" || SpielSteine[2, 1] != "O")
+                    if (Spieler == 1 && SpielSteine[2, 1] == " ")
                     {
                         SpielSteine[2, 1] = "X";
                     }
-                    else if (Spieler == 2 && SpielSteine[2, 1] != "X" || SpielSteine[2, 1] != "O")
+                    else if (Spieler == 2 && SpielSteine[2, 1] == " ")
                     {
                         SpielSteine[2, 1] = "O";
                     }
@@ -276,16 +276,16 @@ namespace Tik_Tak_Toe_Console
                         Console.WriteLine("Spielfeld bereits belegt, bitte andere Koordinaten eingeben.");
                         Console.ReadKey();
                         Console.Clear();
-                        goto SpielSteinSetzen;
+                        goto Anfang;
                     }
                 }
                 else if (Abfrage == "C3" || Abfrage == "c3")
                 {
-                    if (Spieler == 1 && SpielSteine[2, 2] != "X" || SpielSteine[2, 2] != "O")
+                    if (Spieler == 1 && SpielSteine[2, 2] == " ")
                     {
                         SpielSteine[2, 2] = "X";
                     }
-                    else if (Spieler == 2 && SpielSteine[2, 2] != "X" || SpielSteine[2, 2] != "O")
+                    else if (Spieler == 2 && SpielSteine[2, 2] == " ")
                     {
                         SpielSteine[2, 2] = "O";
                     }
@@ -294,7 +294,7 @@ namespace Tik_Tak_Toe_Console
                         Console.WriteLine("Spielfeld bereits belegt, bitte andere Koordinaten eingeben.");
                         Console.ReadKey();
                         Console.Clear();
-                        goto SpielSteinSetzen;
+                        goto Anfang;
                     }
                 }
                 else
@@ -302,7 +302,7 @@ namespace Tik_Tak_Toe_Console
                     Console.WriteLine("Ungültige Koordinaten, bitte noch mal eintippen...");
                     Console.ReadKey();
                     Console.Clear();
-                    goto SpielSteinSetzen;
+                    goto Anfang;
                 }
 
                 //Spieler 1 als gewinner ermitteln
@@ -347,7 +347,8 @@ namespace Tik_Tak_Toe_Console
                 else
                     Spieler = 1;
                 Console.Clear();
-            } while (Gewonnen == true);
+                Zaehler++;
+            } while (Zaehler == 1);
             Console.ReadKey();
 
         }
