@@ -33,7 +33,8 @@ namespace Tik_Tak_Toe_Console
                 Ende();
             }
             else if (Auswahl == "start" || Auswahl == "Start")
-                Einfuehrung();
+                //Einfuehrung();
+                NeuesSpiel();
             else
             {
                 Console.Clear();
@@ -105,7 +106,6 @@ namespace Tik_Tak_Toe_Console
         }
         static void NeuesSpiel()
         {
-            StarteNeunsSpiel:
             string NL = Environment.NewLine;
             Console.Clear();
             int Spieler = 1;
@@ -115,11 +115,12 @@ namespace Tik_Tak_Toe_Console
             //Array für die Spielsteine
             string[,] SpielSteine = new string[3, 3]
             //"A" , "B" , "C"
-            {{" " , " " , " "}, //1
+            {{"X" , " " , " "}, //1
              {" " , " " , " "}, //2
              {" " , " " , " "}};//3
             do
             {
+                Anfang:
                 //Spielfeld ausgabe
                 Console.WriteLine("  " + " | " + "1" + " | " + "2" + " | " + "3");
                 Console.WriteLine("--" + "-+-" + "-" + "-+-" + "-" + "-+-" + "--");
@@ -129,6 +130,182 @@ namespace Tik_Tak_Toe_Console
                 Console.WriteLine("--" + "-+-" + "-" + "-+-" + "-" + "-+-" + "--");
                 Console.WriteLine(" C" + " | " + SpielSteine[2, 0] + " | " + SpielSteine[2, 1] + " | " + SpielSteine[2, 2] + NL);
 
+                Console.WriteLine("Spieler" + Spieler);
+                Console.Write("Bitte Koordinaten eintippen:");
+                //Spieler eingabe und AUswertung
+                SpielSteinSetzen:
+                Abfrage = Console.ReadLine();
+                if (Abfrage == "A1" || Abfrage == "a1")
+                {
+                    if (Spieler == 1 && SpielSteine[0, 0] != "X" || SpielSteine[0, 0] != "O")
+                    {
+                        SpielSteine[0, 0] = "X";
+                    }
+                    else if (Spieler == 2 && SpielSteine[0, 0] != "X" || SpielSteine[0, 0] != "O")
+                    {
+                        SpielSteine[0, 0] = "O";
+                    }
+                    else
+                    {
+                        Console.WriteLine("Spielfeld bereits belegt, bitte andere Koordinaten eingeben.");
+                        Console.ReadKey();
+                        Console.Clear();
+                        goto SpielSteinSetzen;
+                    }
+                }
+                else if (Abfrage == "B1" || Abfrage == "b1")
+                {
+                    if (Spieler == 1 && SpielSteine[0, 1] != "X" || SpielSteine[0, 1] != "O")
+                    {
+                        SpielSteine[0, 1] = "X";
+                    }
+                    else if (Spieler == 2 && SpielSteine[0, 1] != "X" || SpielSteine[0, 1] != "O")
+                    {
+                        SpielSteine[0, 1] = "O";
+                    }
+                    else
+                    {
+                        Console.WriteLine("Spielfeld bereits belegt, bitte andere Koordinaten eingeben.");
+                        Console.ReadKey();
+                        Console.Clear();
+                        goto SpielSteinSetzen;
+                    }
+                }
+                else if (Abfrage == "C1" || Abfrage == "c1")
+                {
+                    if (Spieler == 1 && SpielSteine[0, 2] != "X" || SpielSteine[0, 2] != "O")
+                    {
+                        SpielSteine[0, 2] = "X";
+                    }
+                    else if (Spieler == 2 && SpielSteine[0, 2] != "X" || SpielSteine[0, 2] != "O")
+                    {
+                        SpielSteine[0, 2] = "O";
+                    }
+                    else
+                    {
+                        Console.WriteLine("Spielfeld bereits belegt, bitte andere Koordinaten eingeben.");
+                        Console.ReadKey();
+                        Console.Clear();
+                        goto SpielSteinSetzen;
+                    }
+                }
+                else if (Abfrage == "A0" || Abfrage == "a0")
+                {
+                    if (Spieler == 1 && SpielSteine[1, 0] != "X" || SpielSteine[1, 0] != "O")
+                    {
+                        SpielSteine[0, 1] = "X";
+                    }
+                    else if (Spieler == 2 && SpielSteine[1, 0] != "X" || SpielSteine[1, 0] != "O")
+                    {
+                        SpielSteine[1, 0] = "O";
+                    }
+                    else
+                    {
+                        Console.WriteLine("Spielfeld bereits belegt, bitte andere Koordinaten eingeben.");
+                        Console.ReadKey();
+                        Console.Clear();
+                        goto SpielSteinSetzen;
+                    }
+                }
+                else if (Abfrage == "A1" || Abfrage == "a1")
+                {
+                    if (Spieler == 1 && SpielSteine[1, 1] != "X" || SpielSteine[1, 1] != "O")
+                    {
+                        SpielSteine[1, 1] = "X";
+                    }
+                    else if (Spieler == 2 && SpielSteine[1, 1] != "X" || SpielSteine[1, 1] != "O")
+                    {
+                        SpielSteine[1, 1] = "O";
+                    }
+                    else
+                    {
+                        Console.WriteLine("Spielfeld bereits belegt, bitte andere Koordinaten eingeben.");
+                        Console.ReadKey();
+                        Console.Clear();
+                        goto SpielSteinSetzen;
+                    }
+                }
+                else if (Abfrage == "C3" || Abfrage == "c3")
+                {
+                    if (Spieler == 1 && SpielSteine[1, 2] != "X" || SpielSteine[1, 2] != "O")
+                    {
+                        SpielSteine[1, 2] = "X";
+                    }
+                    else if (Spieler == 2 && SpielSteine[1, 2] != "X" || SpielSteine[1, 2] != "O")
+                    {
+                        SpielSteine[1, 2] = "O";
+                    }
+                    else
+                    {
+                        Console.WriteLine("Spielfeld bereits belegt, bitte andere Koordinaten eingeben.");
+                        Console.ReadKey();
+                        Console.Clear();
+                        goto SpielSteinSetzen;
+                    }
+                }
+                else if (Abfrage == "A3" || Abfrage == "a3")
+                {
+                    if (Spieler == 1 && SpielSteine[2, 0] != "X" || SpielSteine[2, 0] != "O")
+                    {
+                        SpielSteine[2, 0] = "X";
+                    }
+                    else if (Spieler == 2 && SpielSteine[2, 0] != "X" || SpielSteine[2, 0] != "O")
+                    {
+                        SpielSteine[2, 0] = "O";
+                    }
+                    else
+                    {
+                        Console.WriteLine("Spielfeld bereits belegt, bitte andere Koordinaten eingeben.");
+                        Console.ReadKey();
+                        Console.Clear();
+                        goto SpielSteinSetzen;
+                    }
+                }
+                else if (Abfrage == "B2" || Abfrage == "B2")
+                {
+                    if (Spieler == 1 && SpielSteine[2, 1] != "X" || SpielSteine[2, 1] != "O")
+                    {
+                        SpielSteine[2, 1] = "X";
+                    }
+                    else if (Spieler == 2 && SpielSteine[2, 1] != "X" || SpielSteine[2, 1] != "O")
+                    {
+                        SpielSteine[2, 1] = "O";
+                    }
+                    else
+                    {
+                        Console.WriteLine("Spielfeld bereits belegt, bitte andere Koordinaten eingeben.");
+                        Console.ReadKey();
+                        Console.Clear();
+                        goto SpielSteinSetzen;
+                    }
+                }
+                else if (Abfrage == "C3" || Abfrage == "c3")
+                {
+                    if (Spieler == 1 && SpielSteine[2, 2] != "X" || SpielSteine[2, 2] != "O")
+                    {
+                        SpielSteine[2, 2] = "X";
+                    }
+                    else if (Spieler == 2 && SpielSteine[2, 2] != "X" || SpielSteine[2, 2] != "O")
+                    {
+                        SpielSteine[2, 2] = "O";
+                    }
+                    else
+                    {
+                        Console.WriteLine("Spielfeld bereits belegt, bitte andere Koordinaten eingeben.");
+                        Console.ReadKey();
+                        Console.Clear();
+                        goto SpielSteinSetzen;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Ungültige Koordinaten, bitte noch mal eintippen...");
+                    Console.ReadKey();
+                    Console.Clear();
+                    goto SpielSteinSetzen;
+                }
+
+                //Spieler 1 als gewinner ermitteln
                 if (SpielSteine[0, 0] == "X" && SpielSteine[0, 1] == "X" && SpielSteine[0, 2] == "X" ||
                     SpielSteine[1, 0] == "X" && SpielSteine[1, 1] == "X" && SpielSteine[1, 2] == "X" ||
                     SpielSteine[2, 0] == "X" && SpielSteine[2, 1] == "X" && SpielSteine[2, 2] == "X" ||
@@ -141,9 +318,13 @@ namespace Tik_Tak_Toe_Console
                     SpielSteine[0, 2] == "X" && SpielSteine[1, 1] == "X" && SpielSteine[2, 0] == "X")
                 {
                     Console.WriteLine("Spieler 1 hat Gewonnen!");
+                    Console.ReadKey();
+                    Ende();
+
                     Gewonnen = true;
 
                 }
+                //Spieler 2 als gewinner ermitteln
                 else if (SpielSteine[0, 0] == "O" && SpielSteine[0, 1] == "O" && SpielSteine[0, 2] == "O" ||
                          SpielSteine[1, 0] == "O" && SpielSteine[1, 1] == "O" && SpielSteine[1, 2] == "O" ||
                          SpielSteine[2, 0] == "O" && SpielSteine[2, 1] == "O" && SpielSteine[2, 2] == "O" ||
@@ -156,43 +337,19 @@ namespace Tik_Tak_Toe_Console
                          SpielSteine[0, 2] == "O" && SpielSteine[1, 1] == "O" && SpielSteine[2, 0] == "O")
                 {
                     Console.WriteLine("Spieler 2 hat Gewonnen!");
+                    Console.ReadKey();
+                    Ende();
                     Gewonnen = true;
                 }
+                //Spielerwechsel
+                if (Spieler == 1)
+                    Spieler = 2;
                 else
-                {
-                    Console.WriteLine("Spieler" + Spieler);
-                    Console.Write("Bitte Koordinaten eintippen:");
-                    Abfrage:
-                    //Spieler eingabe und AUswertung
-                    Abfrage = Console.ReadLine();
-                    if (Abfrage == "A1" || Abfrage == "a1")
-                    {
-                        if (Spieler == 1)
-                        {
-                            SpielSteine[0, 0] = "X";
-                        }
-                        else
-                        {
-                            SpielSteine[0, 0] = "O";
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("Falsche eingabe.");
-                        Console.WriteLine("Weiter mit belibiger Taste...");
-                        Console.ReadKey();
-                        goto Abfrage;
-                    }
-                }
-
-                    Console.Write("Spieler 1 bitte Koordinaten eingeben:");
-
+                    Spieler = 1;
+                Console.Clear();
             } while (Gewonnen == true);
-
-            
             Console.ReadKey();
-            goto StarteNeunsSpiel;
+
         }
-        //ToDo Spieler eingaben
     }
 }
